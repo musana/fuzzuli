@@ -21,14 +21,14 @@
 </p>
 
 <p align="center">
-<img src="img/gopher.png">
+<img src="./img/gopher.png">
 </p>
 
 **fuzzuli** is a fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
 
 
 # Motivation
-in my application security testing journey that I have been doing for years, I found a lot  critical backup files kept in externally accessible directories. While naming these files, frequently preferred words were used. (backup, etc). However, most of these files were named using the domain name where the application was located. Suppose we have a domain address `fuzzuli.musana.net` If the developer keeps the application backup database backup in the accessible directory, the possible names he will give the file will be like this.
+In my application security testing journey that I have been doing for years, I found a lot  critical backup files kept in externally accessible directories. While naming these files, common preferred words were used. (such as backup.zip, db.rar, conf.tar.gz etc). However, most of these files were named using the domain name where the application was located. Suppose we have a domain address `fuzzuli.musana.net` If the developer keeps the application backup database backup in the accessible directory, the possible names he will give the file will be like this.
 ```raw
 fuzzuli.net.rar
 fuzzuli.net.zip
@@ -42,6 +42,9 @@ fuzzulinet.zip
 fuzzullimusana.rar
 fuzzulimusana.7z
 ...
+musana.fuzzuli.zip
+musanafuzzuli.rar
+...
 so on
 ...
 
@@ -50,22 +53,21 @@ so on
 It is not possible to find these files in the traditional wordlist approach. That's why I decided to publish this tool.
 
 
-I've encountered scenarios where the dots in the filename are deleted, vowels are deleted, or the domain name is used as is. I took this into account when developing this tool.
+When naming these files, the domain name is taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowels are deleted, or the domain name is used as is. I took this into account when developing this tool. therefore, when creating a domain-based wordlist, I took the variants without dots, without vowels, periods and without vowels. After that the domain passes from the following function after removing dots, vowel letter, dot and vowel letter. reverse domain name and mix subdomain also pass from the following function.
 
-the string passes from the following function after removing dots, vowel letter, dot and vowel letter. reverse domain name and mix subdomain also pass from the following function.
+Mathematical equation is like this.
 
-remove iterates over each char in domain. Mathematical equation is like this.
+![](./img/regular.png)
 
-![](img/regular.png)
-
+**fuzzuli** consists of two main parts. One of them dynamically creates a wordlist. The other sends the HTTP request and checks the response.
 
 The "shuffle" method just shuffle subdomains and removes dots, vowels letter and both of two. It does not itarate over each char in string.
 
 
 
-fuzzuli's flowchart is the below.
+Flow chart of **fuzzuli** is the following.
 
-![flowchart](img/fuzzuli.png)
+![flowchart](./img/fuzzuli4.png)
 
 
 
@@ -12371,3 +12373,4 @@ HTTP OPTIONS:
 ```
 
 # Running fuzzuli
+
