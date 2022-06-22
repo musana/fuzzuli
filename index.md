@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-<img src="./img/gopher.png">
+<img src="img/gopher.png">
 </p>
 
 **fuzzuli** is a fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
@@ -56,7 +56,7 @@ the string passes from the following function after removing dots, vowel letter,
 
 remove iterates over each char in domain. Mathematical equation is like this.
 
-![](./img/regular.png)
+![](img/regular.png)
 
 
 The "shuffle" method just shuffle subdomains and removes dots, vowels letter and both of two. It does not itarate over each char in string.
@@ -65,7 +65,7 @@ The "shuffle" method just shuffle subdomains and removes dots, vowels letter and
 
 fuzzuli's flowchart is the below.
 
-![flowchart](./img/fuzzuli4.png)
+![flowchart](img/fuzzuli.png)
 
 
 
