@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-<img src="./img/gopher.png">
+<img src="img/gopher.png">
 </p>
 
 **fuzzuli** is a fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
@@ -50,16 +50,15 @@ so on
 
 ```
 
-It is not possible to find these files in the traditional wordlist approach. That's why I decided to publish this tool.
+It is not possible to find these files in the traditional wordlist approach. 
 
-
-When naming these files, the domain name is taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowels are deleted, or the domain name is used as is. I took this into account when developing this tool. therefore, when creating a domain-based wordlist, I took the variants without dots, without vowels, periods and without vowels. After that the domain passes from the following function after removing dots, vowel letter, dot and vowel letter. reverse domain name and mix subdomain also pass from the following function.
+When naming these files, the domain name is taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowels letters are deleted, or the domain name is used as is. I took this into account when developing this tool. therefore, when creating a domain-based wordlist, I took the variants without dots, without vowels, periods and without vowels. After that the domain passes from the following function after removing dots, vowel letter, dot and vowel letter. reverse domain name and mix subdomain also pass from the following function.
 
 Mathematical equation is like this.
 
-![](./img/regular.png)
+![](img/regular.png)
 
-**fuzzuli** consists of two main parts. One of them dynamically creates a wordlist. The other sends the HTTP request and checks the response.
+**fuzzuli** consists of two main parts. One of them dynamically creates a wordlist. The other sends the HTTP request and checks the response for backup/sensitive file.
 
 The "shuffle" method just shuffle subdomains and removes dots, vowels letter and both of two. It does not itarate over each char in string.
 
@@ -67,12 +66,12 @@ The "shuffle" method just shuffle subdomains and removes dots, vowels letter and
 
 Flow chart of **fuzzuli** is the following.
 
-![flowchart](./img/fuzzuli4.png)
+![flowchart](img/fuzzuli.png)
 
 
 
 
-Fuzzuli can create wordlists with 7 different methods.
+**fuzzuli** is using 7 different methods for creating wordlists. Let's see results for `fuzzuli.musana.net`
 
 ## shuffle
 
@@ -2340,7 +2339,7 @@ https://fuzzuli.musana.net/t.war
 
 ---
 
-## withouddot
+## withoutdot
 
 ```bash
 ┌──(root㉿kali)-[/root/fuzzuli]
@@ -12374,3 +12373,73 @@ HTTP OPTIONS:
 
 # Running fuzzuli
 
+## specifying exclude domain, minimum domain length
+
+
+```
+
+┌──(root㉿kali)-[/home/mars/prod-fuzzuli]
+└─# fuzzuli -f domains.txt -w 32 -ex .rar,.zip -es "tesla|twitter" -dl 11 -p
+
+  __                               _   _
+ / _|                             | | (_)
+| |_   _   _   ____  ____  _   _  | |  _
+|  _| | | | | |_  / |_  / | | | | | | | |
+| |   | |_| |  / /   / /  | |_| | | | | |
+|_|    \__,_| /___| /___|  \__,_| |_| |_|
+
+musana.net | @musana
+--------------------------------------------
+[*] Scan starting time: 2022-06-22 21:07:58
+[-] https://yandex.com/yandex.rar
+[-] https://yandex.com/yandex.zip
+[-] https://yandex.com/yndx.rar
+[-] https://yandex.com/yndx.zip
+[-] https://yandex.com/yandex.com.rar
+[-] https://yandex.com/yandex.com.zip
+[-] https://yandex.com/yndx.cm.rar
+[-] https://yandex.com/yndx.cm.zip
+[-] https://yandex.com/yandexcom.rar
+[-] https://yandex.com/yandexcom.zip
+[-] https://yandex.com/yndxcm.rar
+[-] https://yandex.com/yndxcm.zip
+
+```
+
+
+## specifying extension, input file, etc.
+```
+┌──(root㉿kali)-[/home/mars/prod-fuzzuli]
+└─# fuzzuli -f domains.txt -w 32 -ex .rar,.zip -p
+
+  __                               _   _
+ / _|                             | | (_)
+| |_   _   _   ____  ____  _   _  | |  _
+|  _| | | | | |_  / |_  / | | | | | | | |
+| |   | |_| |  / /   / /  | |_| | | | | |
+|_|    \__,_| /___| /___|  \__,_| |_| |_|
+
+musana.net | @musana
+--------------------------------------------
+[*] Scan starting time: 2022-06-22 21:00:34
+[-] https://code.facebook.com/code.rar
+[-] https://tesla.com/tesla.rar
+[-] https://blog.twitter.com/blog.rar
+[-] https://yandex.com/yandex.rar
+[-] https://play.google.com/play.rar
+[-] https://help.instagram.com/help.rar
+[-] https://play.google.com/play.zip
+[-] https://help.instagram.com/help.zip
+[-] https://blog.twitter.com/blog.zip
+[-] https://play.google.com/ply.rar
+[-] https://code.facebook.com/code.zip
+[-] https://yandex.com/yandex.zip
+[-] https://help.instagram.com/hlp.rar
+[-] https://tesla.com/tesla.zip
+[-] https://play.google.com/ply.zip
+[-] https://help.instagram.com/hlp.zip
+[-] https://blog.twitter.com/blg.rar
+[-] https://code.facebook.com/cd.rar
+[-] https://play.google.com/play.google.rar
+[-] https://yandex.com/yndx.rar
+```
