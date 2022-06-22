@@ -507,6 +507,7 @@ https://fuzzuli.musana.net/msnfzzl.war
 </details>
 
 ---
+<br />
 
 ## regular
 
@@ -2338,6 +2339,7 @@ https://fuzzuli.musana.net/t.war
 </details>
 
 ---
+<br />
 
 ## withoutdot
 
@@ -3785,6 +3787,7 @@ https://fuzzuli.musana.net/t.war
 </details>
 
 ---
+<br />
 
 ## withoutvowal
 
@@ -4495,6 +4498,8 @@ https://fuzzuli.musana.net/t.war
 </details>
 
 ---
+<br />
+
 
 ## withoutdv
 
@@ -4985,7 +4990,7 @@ https://fuzzuli.musana.net/t.war
 </details>
 
 ---
-
+<br />
 
 ## backwards
 
@@ -8534,6 +8539,7 @@ https://fuzzuli.musana.net/nfzzl.war
 </details>
 
 ---
+<br />
 
 ## mixed
 
