@@ -13,11 +13,11 @@
 </p>
 
 <p align="center">
+  <a href="#motivation">Motivation</a> •
   <a href="#how-to-works">How to works</a> •
-  <a href="#features">Features</a> •
   <a href="#installation-instructions">Installation</a> •
   <a href="#usage">Usage</a> •
-  <a href="#running-mx-takeover">Running fuzzuli</a>
+  <a href="#running-fuzzuli">Running fuzzuli</a>
 </p>
 
 <p align="center">
@@ -52,6 +52,7 @@ so on
 
 It is not possible to find these files in the traditional wordlist approach. 
 
+# How to works
 When naming these files, the domain name is taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowels letters are deleted, or the domain name is used as is. I took this into account when developing this tool. therefore, when creating a domain-based wordlist, I took the variants without dots, without vowels, periods and without vowels. After that the domain passes from the following function after removing dots, vowel letter, dot and vowel letter. reverse domain name and mix subdomain also pass from the following function.
 
 Mathematical equation is like this.
@@ -506,7 +507,7 @@ https://fuzzuli.musana.net/msnfzzl.war
   
 </details>
 
----
+
 <br />
 
 ## regular
@@ -2338,7 +2339,7 @@ https://fuzzuli.musana.net/t.backup
 https://fuzzuli.musana.net/t.war  
 </details>
 
----
+
 <br />
 
 ## withoutdot
@@ -3786,7 +3787,7 @@ https://fuzzuli.musana.net/t.war
   
 </details>
 
----
+
 <br />
 
 ## withoutvowal
@@ -4497,7 +4498,7 @@ https://fuzzuli.musana.net/t.war
   
 </details>
 
----
+
 <br />
 
 
@@ -4989,7 +4990,7 @@ https://fuzzuli.musana.net/t.war
 
 </details>
 
----
+
 <br />
 
 ## backwards
@@ -8538,7 +8539,7 @@ https://fuzzuli.musana.net/nfzzl.war
 
 </details>
 
----
+
 <br />
 
 ## mixed
@@ -12311,8 +12312,6 @@ https://fuzzuli.musana.net/t.net.war
     <b>Show 7777 Possibilities</b>
   </summary>
   </details>
-
-
 
 
 # Installation Instructions
