@@ -12368,7 +12368,7 @@ HTTP OPTIONS:
 
 ```
 
-┌──(root㉿kali)-[/home/mars/prod-fuzzuli]
+┌──(root㉿kali)-[/root/fuzzuli]
 └─# fuzzuli -f domains.txt -w 32 -ex .rar,.zip -es "tesla|twitter" -dl 11 -p
 
   __                               _   _
@@ -12399,7 +12399,7 @@ musana.net | @musana
 
 ## specifying extension, input file, etc.
 ```
-┌──(root㉿kali)-[/home/mars/prod-fuzzuli]
+┌──(root㉿kali)-[/root/fuzzuli]
 └─# fuzzuli -f domains.txt -w 32 -ex .rar,.zip -p
 
   __                               _   _
