@@ -22,10 +22,6 @@
   <img src="img/gopher.png">
 </p>
 
-<p align="center">
-  <a href="https://fuzzuli.musana.net">https://fuzzuli.musana.net</a>
-</p>
-
 **fuzzuli** is a fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
 
 <p align="center">
@@ -12437,3 +12433,5 @@ musana.net | @musana
 [-] https://play.google.com/play.google.rar
 [-] https://yandex.com/yndx.rar
 ```
+# tool page
+[https://fuzzuli.musana.net](https://fuzzuli.musana.net)
