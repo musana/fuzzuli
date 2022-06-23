@@ -22,7 +22,7 @@
   <img src="img/gopher.png">
 </p>
 
-**fuzzuli** is a fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
+**fuzzuli** is a url fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
 
 <p align="center">
 <img src="img/sample.png">
