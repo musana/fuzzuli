@@ -6,8 +6,6 @@
 
 
 <p align="center">
-  <a href="#"><img src="https://pkg.go.dev/badge/github.com/musana/fuzzuli.svg"></a>
-  <a href="https://goreportcard.com/report/github.com/musana/fuzzuli"><img src="https://goreportcard.com/badge/github.com/musana/fuzzuli"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg"></a>
   <a href="https://twitter.com/musana"><img src="https://img.shields.io/twitter/follow/musana.svg?logo=twitter"></a>
 </p>
@@ -26,6 +24,9 @@
 
 **fuzzuli** is a fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
 
+<p align="center">
+<img src="img/sample.png">
+</p>
 
 # Motivation
 In my application security testing journey that I have been doing for years, I found a lot  critical backup files kept in externally accessible directories. While naming these files, common preferred words were used. (such as backup.zip, db.rar, conf.tar.gz etc). However, most of these files were named using the domain name where the application was located. Suppose we have a domain address `fuzzuli.musana.net` If the developer keeps the application backup database backup in the accessible directory, the possible names he will give the file will be like this.
@@ -53,17 +54,21 @@ so on
 It is not possible to find these files in the traditional wordlist approach. 
 
 # How to works
-When naming these files, the domain name is taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowels letters are deleted, or the domain name is used as is. I took this into account when developing this tool. therefore, when creating a domain-based wordlist, I took the variants without dots, without vowels, periods and without vowels. After that the domain passes from the following function after removing dots, vowel letter, dot and vowel letter. reverse domain name and mix subdomain also pass from the following function.
+When naming these files, the domain name is often taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowel letters are deleted, or the domain name is used as is. I took this into account when developing this tool. Therefore, when creating a domain-based word list, I took the variants without dots, without vowels, both without dots and without vowels. Then the domain passes from the following function after removing dots, vowel letters both dot and vowel letter. 
+
+It goes through the below function after "domain" is reversed in **reverse method**.
+
+**mixed method** changes position of each subdomain. Then results goes through the below function.
 
 Mathematical equation is like this.
 
 ![](img/regular.png)
 
-**fuzzuli** consists of two main parts. One of them dynamically creates a wordlist. The other sends the HTTP request and checks the response for backup/sensitive file.
 
-The "shuffle" method just shuffle subdomains and removes dots, vowels letter and both of two. It does not itarate over each char in string.
+**shuffle method** just shuffle subdomains and removes dots, vowel letters both dots and vowel letters. It does not itarate over each char in domain string.
 
 
+**fuzzuli** consists of two main parts. One of them creates a wordlist dynamically. The other sends the HTTP request and checks the response for backup/sensitive file.
 
 Flow chart of **fuzzuli** is the following.
 
@@ -2342,11 +2347,11 @@ https://fuzzuli.musana.net/t.war
 
 <br />
 
-## withoutdot
+## withoutdots
 
 ```bash
 ┌──(root㉿kali)-[/root/fuzzuli]
-└─# echo https://fuzzuli.musana.net|fuzzuli -mt withoutdot
+└─# echo https://fuzzuli.musana.net|fuzzuli -mt withoutdots
 ```
 
 <details>
@@ -3790,11 +3795,11 @@ https://fuzzuli.musana.net/t.war
 
 <br />
 
-## withoutvowal
+## withoutvowels
 
 ```bash
 ┌──(root㉿kali)-[/root/fuzzuli]
-└─# echo https://fuzzuli.musana.net|fuzzuli -mt withoutvowal
+└─# echo https://fuzzuli.musana.net|fuzzuli -mt withoutvowels
 ```
 
 <details>
@@ -4993,11 +4998,11 @@ https://fuzzuli.musana.net/t.war
 
 <br />
 
-## backwards
+## reverse
 
 ```bash
 ┌──(root㉿kali)-[/root/fuzzuli]
-└─# echo https://fuzzuli.musana.net|fuzzuli -mt backwards
+└─# echo https://fuzzuli.musana.net|fuzzuli -mt reverse
 ```
 
 <details>
@@ -12285,20 +12290,7 @@ https://fuzzuli.musana.net/t.net.backup
 https://fuzzuli.musana.net/t.net.war  
 </details>
 
-
-
-
-```bash
-┌──(root㉿kali)-[/root/fuzzuli]
-└─# echo https://fuzzuli.musana.net|fuzzuli -mt withoutdv
-```
-
-<details>
-  <summary>
-    Show 473 Possibilities.
-  </summary>
-
-</details>
+<br />
 
 ## all
 
@@ -12306,13 +12298,7 @@ https://fuzzuli.musana.net/t.net.war
 ┌──(root㉿kali)-[/root/fuzzuli]
 └─# echo https://fuzzuli.musana.net|fuzzuli -mt all
 ```
-
-<details>
-  <summary>
-    <b>Show 7777 Possibilities</b>
-  </summary>
-  </details>
-
+**all** uses all methods then removes duplicates. It will generate 7777 word for `fuzzuli.musana.net`
 
 # Installation Instructions
 
@@ -12323,7 +12309,6 @@ go install -v github.com/musana/fuzzuli@latest
 ```
 
 # Usage
-
 
 ```console
 
@@ -12353,7 +12338,7 @@ GENERAL OPTIONS:
    -help      print this
 
 WORDLIST OPTIONS:
-   -mt string  methods. avaible methods: regular, withoutdot, withoutvowal, backwards, mixed, withoutdv, shuffle
+   -mt string  methods. avaible methods: regular, withoutdots, withoutvowels, reverse, mixed, withoutdv, shuffle
    -sf string  suffix
    -pf string  prefix
    -ex string  file extension. default (rar, zip, tar.gz, tar, gz, jar, 7z, bz2, sql, backup, war)
