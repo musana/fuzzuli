@@ -91,7 +91,7 @@ Flow chart of **fuzzuli** is the following.
     <b>Show 418 Possibilities</b>
   </summary>
 
-https://fuzzuli.musana.net/fuzzuli.rar  
+https://fuzzuli.musana.net/fuzzuli.rar   
 https://fuzzuli.musana.net/fuzzuli.zip  
 https://fuzzuli.musana.net/fuzzuli.tar.gz  
 https://fuzzuli.musana.net/fuzzuli.tar  
