@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="#motivation">Motivation</a> •
-  <a href="#how-to-works">How to works</a> •
+  <a href="#background">Background</a> •
   <a href="#installation-instructions">Installation</a> •
   <a href="#usage">Usage</a> •
   <a href="#running-fuzzuli">Running fuzzuli</a>
@@ -29,7 +29,7 @@
 </p>
 
 # Motivation
-In my application security testing journey that I have been doing for years, I found a lot  critical backup files kept in externally accessible directories. While naming these files, common preferred words were used. (such as backup.zip, db.rar, conf.tar.gz etc). However, most of these files were named using the domain name where the application was located. Suppose we have a domain address `fuzzuli.musana.net` If the developer keeps the application backup database backup in the accessible directory, the possible names he will give the file will be like this.
+In my application security testing journey that I have been doing for years, I found a lot  critical backup files kept in externally accessible directories. While naming these files, common preferred words were used. (such as backup.zip, db.rar, conf.tar.gz etc). However, most of these files were named using the domain name where the application was located. Suppose we have a domain address `fuzzuli.musana.net` If the developer keeps the application backup database backup in the accessible directory, the possible file names will be like this.
 ```raw
 fuzzuli.net.rar
 fuzzuli.net.zip
@@ -53,8 +53,8 @@ so on
 
 It is not possible to find these files in the traditional wordlist approach. 
 
-# How to works
-When naming these files, the domain name is often taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowel letters are deleted, or the domain name is used as is. I took this into account when developing this tool. Therefore, when creating a domain-based word list, I took the variants without dots, without vowels, both without dots and without vowels. Then the domain passes from the following function after removing dots, vowel letters both dot and vowel letter. 
+# Background
+When naming these files, the domain name is often taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowel letters are deleted, or the domain name is used as is. I took this into account when developing this tool. Therefore, when creating a domain-based wordlist, I took the variants without dots, without vowels, both without dots and without vowels. Then the domain passes from the following function after removing dots, vowel letters both dot and vowel letter. 
 
 It goes through the below function after "domain" is reversed in **reverse method**.
 
