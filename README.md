@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="#motivation">Motivation</a> •
-  <a href="#how-to-works">How it works</a> •
+  <a href="#background">Background</a> •
   <a href="#installation-instructions">Installation</a> •
   <a href="#usage">Usage</a> •
   <a href="#running-fuzzuli">Running fuzzuli</a>
@@ -55,7 +55,7 @@ so on
 
 It is not possible to find these files in the traditional wordlist approach. 
 
-# How to works
+# Background
 When naming these files, the domain name is often taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowel letters are deleted, or the domain name is used as is. I took this into account when developing this tool. Therefore, when creating a domain-based wordlist, I took the variants without dots, without vowels, both without dots and without vowels. Then the domain passes from the following function after removing dots, vowel letters both dot and vowel letter. 
 
 It goes through the below function after "domain" is reversed in **reverse method**.
