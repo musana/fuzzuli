@@ -6,6 +6,8 @@
 
 
 <p align="center">
+  <a href="https://pkg.go.dev/github.com/musana/fuzzuli"><img src="https://pkg.go.dev/badge/github.com/musana/fuzzuli.svg"></a>
+  <a href="https://goreportcard.com/report/github.com/musana/fuzzuli"><img src="https://goreportcard.com/badge/github.com/musana/fuzzuli"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg"></a>
   <a href="https://twitter.com/musana"><img src="https://img.shields.io/twitter/follow/musana.svg?logo=twitter"></a>
 </p>
