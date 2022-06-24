@@ -12369,6 +12369,14 @@ HTTP OPTIONS:
 
 
 ```
+┌──(root㉿kali)-[/root/fuzzuli]
+└─# cat domains.txt
+https://play.google.com
+https://code.facebook.com
+https://blog.twitter.com
+https://help.instagram.com
+https://tesla.com
+https://yandex.com
 
 ┌──(root㉿kali)-[/root/fuzzuli]
 └─# fuzzuli -f domains.txt -w 32 -ex .rar,.zip -es "tesla|twitter" -dl 11 -p
