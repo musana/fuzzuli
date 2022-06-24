@@ -374,7 +374,7 @@ func ParseOptions() *Options {
 	createGroup(flagSet, "matcher options", "MATCHER OPTIONS",
 		flagSet.StringVar(&options.content_type, "ct", "", "match response with specified content type"),
 		flagSet.IntVar(&options.status_code, "sc", 200, "match response with specified status code"),
-		flagSet.IntVar(&options.min_content_length, "cl", 100, "minimum content length. match response with specified min content-lenght. e.g. >100"),
+		flagSet.IntVar(&options.min_content_length, "cl", 100, "match response with specified minimum content length. e.g. >100"),
 	)
 
 	createGroup(flagSet, "http options", "HTTP OPTIONS",
