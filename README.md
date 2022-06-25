@@ -56,7 +56,7 @@ It is not possible to find these files in the traditional wordlist approach.
 # Background
 When naming these files, the domain name is often taken as a reference. I've encountered scenarios when naming these files where the dots in the domain are deleted, vowel letters are deleted, or the domain name is used as is. I took this into account when developing this tool. Therefore, when creating a domain-based wordlist, I took the variants without dots, without vowels, both without dots and without vowels. Then the domain passes from the following function after removing dots, vowel letters both dot and vowel letter. 
 
-It goes through the below function after "domain" is reversed in **reverse method**.
+It goes through the below function after domain is reversed in **reverse method**.
 
 **mixed method** changes position of each subdomain. Then results goes through the below function.
 
