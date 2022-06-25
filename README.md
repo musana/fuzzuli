@@ -3,8 +3,6 @@
   <br>
 </h1>
 
-
-
 <p align="center">
   <a href="https://pkg.go.dev/github.com/musana/fuzzuli"><img src="https://pkg.go.dev/badge/github.com/musana/fuzzuli.svg"></a>
   <a href="https://goreportcard.com/report/github.com/musana/fuzzuli"><img src="https://goreportcard.com/badge/github.com/musana/fuzzuli"></a>
