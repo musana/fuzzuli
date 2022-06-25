@@ -16,6 +16,7 @@
   <a href="#installation-instructions">Installation</a> •
   <a href="#usage">Usage</a> •
   <a href="#running-fuzzuli">Running fuzzuli</a>
+  <a href="#tool-page">Tool Page</a>
 </p>
 
 <p align="center">
@@ -40,7 +41,7 @@ other file compression extensions
 fuzzulinet.rar
 fuzzulinet.zip
 ...
-fuzzullimusana.rar
+fuzzulimusana.rar
 fuzzulimusana.7z
 ...
 musana.fuzzuli.zip
@@ -12441,5 +12442,5 @@ musana.net | @musana
 [-] https://play.google.com/play.google.rar
 [-] https://yandex.com/yndx.rar
 ```
-# tool page
+# Tool Page
 [https://fuzzuli.musana.net](https://fuzzuli.musana.net)
