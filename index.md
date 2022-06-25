@@ -31,7 +31,7 @@
 </p>
 
 # Motivation
-In my application security testing journey that I have been doing for years, I found a lot  critical backup files kept in externally accessible directories. While naming these files, common preferred words were used. (such as backup.zip, db.rar, conf.tar.gz etc). However, most of these files were named using the domain name where the application was located. Suppose we have a domain address `fuzzuli.musana.net` If the developer keeps the application backup database backup in the accessible directory, the possible file names will be like this.
+In my application security testing journey that i have been doing for years, i found a lot  critical backup files kept in externally accessible directories. While naming these files, common preferred words were used. (such as backup.zip, db.rar, conf.tar.gz etc). However, most of these files were named using the domain name where the application was located. Let's suppose we have a domain address `fuzzuli.musana.net` If the developer keeps critical backup files in the accessible directory, the possible file names will be like this.
 ```raw
 fuzzuli.net.rar
 fuzzuli.net.zip
