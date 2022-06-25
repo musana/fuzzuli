@@ -42,7 +42,7 @@ other file compression extensions
 fuzzulinet.rar
 fuzzulinet.zip
 ...
-fuzzullimusana.rar
+fuzzulimusana.rar
 fuzzulimusana.7z
 ...
 musana.fuzzuli.zip
