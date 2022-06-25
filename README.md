@@ -15,7 +15,7 @@
   <a href="#background">Background</a> •
   <a href="#installation-instructions">Installation</a> •
   <a href="#usage">Usage</a> •
-  <a href="#running-fuzzuli">Running fuzzuli</a>
+  <a href="#running-fuzzuli">Running fuzzuli</a> •
   <a href="#tool-page">Tool Page</a>
 </p>
 
