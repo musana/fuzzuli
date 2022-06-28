@@ -301,8 +301,12 @@ func headRequest(domain string, wordlist []string) {
 			client := httpClient(options.proxy)
 			resp, err := client.Do(requestBuilder(url))
 
-			if err != nil {
-				return
+			if err, ok := err.(net.Error); ok && err.Timeout() {
+				fmt.Println(string("\033[33m")+"[!] Timeout. Skipping :: "+url, string("\033[0m"))
+				continue
+			} else if err != nil {
+				fmt.Println(string("\033[31m")+"[!] Something went wrong. Exiting :: "+url, string("\033[0m"))
+				os.Exit(1)
 			}
 
 			if _, ok := resp.Header["Content-Length"]; ok {
@@ -385,7 +389,7 @@ func ParseOptions() *Options {
 
 	_ = flagSet.Parse()
 
-	Version := "0.0.1"
+	Version := "0.0.2"
 	if options.version {
 		fmt.Println("Current Version:", Version)
 		os.Exit(0)
