@@ -20,7 +20,7 @@ import (
 
 var urls []string
 var options *Options
-var extensions = []string{".rar", ".zip", ".tar.gz", ".tar", ".gz", ".jar", ".7z", ".bz2", ".sql", ".backup", ".war"}
+var extensions = []string{".rar", ".zip", ".tar.gz", ".tar", ".gz", ".jar", ".7z", ".bz2", ".sql", ".backup", ".war", ".bak", ".tmp", ".db", ".old"}
 
 var mime_types = []string{
 	"application/octet-stream",
