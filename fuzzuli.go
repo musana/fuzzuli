@@ -419,7 +419,7 @@ func ParseOptions() *Options {
 
 	_ = flagSet.Parse()
 
-	Version := "1.0.2"
+	Version := "v1.1"
 	if options.version {
 		fmt.Println("Current Version:", Version)
 		os.Exit(0)
