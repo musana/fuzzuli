@@ -22,7 +22,6 @@ import (
 
 var urls, paths, methods []string
 
-//var paths = []string{"/"}
 var options *Options
 var extensions = []string{".rar", ".zip", ".tar.gz", ".tar", ".gz", ".jar", ".7z", ".bz2", ".sql", ".backup", ".war", ".bak"}
 
@@ -42,8 +41,13 @@ var mime_types = []string{
 var bar = progressbar.Default(-1, "request count")
 
 func main() {
-	banner()
+
 	options = ParseOptions()
+
+	if options.banner {
+		banner()
+		os.Exit(0)
+	}
 
 	if options.file != "" {
 		readFromFile()
@@ -372,6 +376,7 @@ type Options struct {
 	domain_length      int
 	min_content_length int
 	version            bool
+	banner             bool
 	print              bool
 	help               bool
 }
@@ -384,10 +389,11 @@ func ParseOptions() *Options {
 	createGroup(flagSet, "General Options", "GENERAL OPTIONS",
 		flagSet.IntVar(&options.worker, "w", 16, "worker count"),
 		flagSet.StringVar(&options.file, "f", "", "input file containing list of host/domain"),
-		flagSet.StringVar(&options.paths, "pt", "/", "paths. separate with commas to use multiple paths"),
-		flagSet.BoolVar(&options.print, "p", false, "print urls that sent request"),
+		flagSet.StringVar(&options.paths, "pt", "/", "paths. separate with commas to use multiple paths. e.g. /,/db/,/old/"),
+		flagSet.BoolVar(&options.print, "p", false, "print urls that is sent request"),
 		flagSet.BoolVar(&options.version, "v", false, "print version"),
 		flagSet.BoolVar(&options.help, "help", false, "print this"),
+		flagSet.BoolVar(&options.banner, "banner", false, "print banner"),
 	)
 
 	createGroup(flagSet, "wordlist options", "WORDLIST OPTIONS",
@@ -419,7 +425,7 @@ func ParseOptions() *Options {
 
 	_ = flagSet.Parse()
 
-	Version := "v1.1"
+	Version := "v1.1.1"
 	if options.version {
 		fmt.Println("Current Version:", Version)
 		os.Exit(0)
