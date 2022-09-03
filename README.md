@@ -12332,11 +12332,13 @@ Usage:
 
 Flags:
 GENERAL OPTIONS:
-   -w int     worker count (default 16)
-   -f string  input file containing list of host/domain
-   -p         print urls that sent request
-   -v         print version
-   -help      print this
+   -w int      worker count (default 16)
+   -f string   input file containing list of host/domain
+   -pt string  paths. separate with commas to use multiple paths. e.g. /,/db/,/old/ (default "/")
+   -p          print urls that is sent request
+   -v          print version
+   -help       print this
+   -banner     print banner
 
 WORDLIST OPTIONS:
    -mt string  methods. avaible methods: regular, withoutdots, withoutvowels, reverse, mixed, withoutdv, shuffle
@@ -12353,11 +12355,12 @@ DOMAIN OPTIONS:
 MATCHER OPTIONS:
    -ct string  match response with specified content type
    -sc int     match response with specified status code (default 200)
-   -cl int     minimum content length. match response with specified min content-lenght. e.g. >100 (default 100)
+   -cl int     match response with specified minimum content length. e.g. >100 (default 100)
 
 HTTP OPTIONS:
    -to int     timeout in seconds. (default 10)
    -ua string  user agent (default "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0")
+   -hm string  HTTP Method. (default "HEAD")
    -px string  http proxy to use
 
 ```
