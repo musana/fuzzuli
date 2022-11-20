@@ -23,7 +23,7 @@ import (
 var urls, paths, methods []string
 
 var options *Options
-var extensions = []string{".rar", ".zip", ".tar.gz", ".tar", ".gz", ".jar", ".7z", ".bz2", ".sql", ".backup", ".war", ".bak"}
+var extensions = []string{".rar", ".zip", ".tar.gz", ".tar", ".gz", ".jar", ".7z", ".bz2", ".sql", ".backup", ".war", ".bak", ".dll"}
 
 var mime_types = []string{
 	"application/octet-stream",
@@ -36,18 +36,17 @@ var mime_types = []string{
 	"application/x-tar",
 	"application/zip",
 	"application/x-7z-compressed",
+	"application/x-msdownload",
+	"application/x-msdos-program",
 }
 
 var bar = progressbar.Default(-1, "request count")
 
 func main() {
 
-	options = ParseOptions()
+	banner()
 
-	if options.banner {
-		banner()
-		os.Exit(0)
-	}
+	options = ParseOptions()
 
 	if options.file != "" {
 		readFromFile()
@@ -341,7 +340,7 @@ func headRequest(domain string, word string) {
 						content_type := resp.Header["Content-Type"][0]
 						is_found := contains(mime_types, content_type)
 						if content_length > options.min_content_length && is_found && resp.StatusCode == options.status_code {
-							info := fmt.Sprintf("[+] Possible sensitive file was found. URL: [%s] CT: [%s] CL: [%d] SC: [%d]", url, content_type, content_length, resp.StatusCode)
+							info := fmt.Sprintf("\n[+] Possible sensitive file was found. URL: [%s] CT: [%s] CL: [%d] SC: [%d]", url, content_type, content_length, resp.StatusCode)
 							fmt.Println(string("\033[32m")+info, string("\033[0m"))
 						}
 					}
@@ -376,7 +375,6 @@ type Options struct {
 	domain_length      int
 	min_content_length int
 	version            bool
-	banner             bool
 	print              bool
 	help               bool
 }
@@ -392,8 +390,6 @@ func ParseOptions() *Options {
 		flagSet.StringVar(&options.paths, "pt", "/", "paths. separate with commas to use multiple paths. e.g. /,/db/,/old/"),
 		flagSet.BoolVar(&options.print, "p", false, "print urls that is sent request"),
 		flagSet.BoolVar(&options.version, "v", false, "print version"),
-		flagSet.BoolVar(&options.help, "help", false, "print this"),
-		flagSet.BoolVar(&options.banner, "banner", false, "print banner"),
 	)
 
 	createGroup(flagSet, "wordlist options", "WORDLIST OPTIONS",
@@ -425,7 +421,7 @@ func ParseOptions() *Options {
 
 	_ = flagSet.Parse()
 
-	Version := "v1.1.1"
+	Version := "v1.1.2"
 	if options.version {
 		fmt.Println("Current Version:", Version)
 		os.Exit(0)
@@ -451,6 +447,6 @@ func banner() {
 |_|    \__,_| /___| /___|  \__,_| |_| |_|
 
 musana.net | @musana
--------------------------------------------- `)
+--------------------------------------------`)
 
 }
