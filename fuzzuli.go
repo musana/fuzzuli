@@ -53,7 +53,7 @@ func main() {
 	} else {
 		fi, _ := os.Stdin.Stat()
 		if fi.Mode()&os.ModeNamedPipe == 0 {
-			fmt.Println("[!] No data found in pipe. urls must given using pipe or f parameter!")
+			fmt.Println("[!] No data found in pipe. Urls must be given using pipe or f parameter!")
 			os.Exit(1)
 		} else {
 			readFromStdin()
@@ -382,7 +382,7 @@ type Options struct {
 func ParseOptions() *Options {
 	options := &Options{}
 	flagSet := goflags.NewFlagSet()
-	flagSet.SetDescription(`fuzzuli is a fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.`)
+	flagSet.SetDescription(`fuzzuli is a url fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.`)
 
 	createGroup(flagSet, "General Options", "GENERAL OPTIONS",
 		flagSet.IntVar(&options.worker, "w", 16, "worker count"),
