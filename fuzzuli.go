@@ -101,7 +101,7 @@ func start(domain string) {
 	}
 }
 
-func getAllCombination(domain string) {
+func getAllCombination(domain string) string {
 	generate_wordlist := []string{}
 
 	for _, method := range methods {
@@ -127,9 +127,15 @@ func getAllCombination(domain string) {
 
 	if options.just_wordlist {
 		for _, word := range generate_wordlist {
-			fmt.Println(domain + "/" + word)
+			for _, e := range extensions {
+				for _, path := range paths {
+					url := domain + path + options.prefix + word + options.suffix + e
+					fmt.Println(url)
+				}
+			}
 		}
-		os.Exit(0)
+
+		return ""
 	}
 
 	wpx := workerpool.New(options.worker)
@@ -141,7 +147,7 @@ func getAllCombination(domain string) {
 		})
 	}
 	wpx.StopWait()
-
+	return ""
 }
 
 func regularDomain(domain string, wordlist *[]string) {
