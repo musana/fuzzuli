@@ -12325,7 +12325,7 @@ go install -v github.com/musana/fuzzuli@latest
 
 musana.net | @musana
 --------------------------------------------
-fuzzuli is a fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
+fuzzuli is a url fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.
 
 Usage:
   fuzzuli [flags]
@@ -12336,9 +12336,8 @@ GENERAL OPTIONS:
    -f string   input file containing list of host/domain
    -pt string  paths. separate with commas to use multiple paths. e.g. /,/db/,/old/ (default "/")
    -p          print urls that is sent request
+   -sl         silent mode
    -v          print version
-   -help       print this
-   -banner     print banner
 
 WORDLIST OPTIONS:
    -mt string  methods. avaible methods: regular, withoutdots, withoutvowels, reverse, mixed, withoutdv, shuffle
@@ -12347,6 +12346,7 @@ WORDLIST OPTIONS:
    -ex string  file extension. default (rar, zip, tar.gz, tar, gz, jar, 7z, bz2, sql, backup, war)
    -rp string  replace specified char
    -rm string  remove specified char
+   -jw         just generate wordlist do not http request
 
 DOMAIN OPTIONS:
    -es string  exclude domain that contains specified string or char. e.g. for OR operand google|bing|yahoo (default "#")
