@@ -44,9 +44,13 @@ var bar = progressbar.Default(-1, "request count")
 
 func main() {
 
-	banner()
-
 	options = ParseOptions()
+
+	if !options.silent {
+		timeInfo("starting")
+		defer timeInfo("ending")
+		banner()
+	}
 
 	if options.file != "" {
 		readFromFile()
@@ -76,9 +80,6 @@ func main() {
 	} else {
 		paths = strings.Split(options.paths, "")
 	}
-
-	timeInfo("starting")
-	defer timeInfo("ending")
 
 	wp := workerpool.New(options.worker)
 
@@ -124,7 +125,14 @@ func getAllCombination(domain string) {
 		}
 	}
 
-	wpx := workerpool.New(16)
+	if options.just_wordlist {
+		for _, word := range generate_wordlist {
+			fmt.Println(domain + "/" + word)
+		}
+		os.Exit(0)
+	}
+
+	wpx := workerpool.New(options.worker)
 
 	for _, word := range generate_wordlist {
 		word := word
@@ -374,6 +382,8 @@ type Options struct {
 	status_code        int
 	domain_length      int
 	min_content_length int
+	just_wordlist      bool
+	silent             bool
 	version            bool
 	print              bool
 	help               bool
@@ -389,6 +399,7 @@ func ParseOptions() *Options {
 		flagSet.StringVar(&options.file, "f", "", "input file containing list of host/domain"),
 		flagSet.StringVar(&options.paths, "pt", "/", "paths. separate with commas to use multiple paths. e.g. /,/db/,/old/"),
 		flagSet.BoolVar(&options.print, "p", false, "print urls that is sent request"),
+		flagSet.BoolVar(&options.silent, "sl", false, "silent mode"),
 		flagSet.BoolVar(&options.version, "v", false, "print version"),
 	)
 
@@ -399,6 +410,7 @@ func ParseOptions() *Options {
 		flagSet.StringVar(&options.extension, "ex", "", "file extension. default (rar, zip, tar.gz, tar, gz, jar, 7z, bz2, sql, backup, war)"),
 		flagSet.StringVar(&options.replace, "rp", "", "replace specified char"),
 		flagSet.StringVar(&options.remove, "rm", "", "remove specified char"),
+		flagSet.BoolVar(&options.just_wordlist, "jw", false, "just generate wordlist do not http request"),
 	)
 
 	createGroup(flagSet, "domain options", "DOMAIN OPTIONS",
