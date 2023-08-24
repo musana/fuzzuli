@@ -12346,7 +12346,7 @@ WORDLIST OPTIONS:
    -ex string  file extension. default (rar, zip, tar.gz, tar, gz, jar, 7z, bz2, sql, backup, war)
    -rp string  replace specified char
    -rm string  remove specified char
-   -jw         just generate wordlist do not http request
+   -jw         just generate wordlist do not send http request
 
 DOMAIN OPTIONS:
    -es string  exclude domain that contains specified string or char. e.g. for OR operand google|bing|yahoo (default "#")
